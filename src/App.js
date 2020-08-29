@@ -3,10 +3,10 @@ import './App.css';
 
 export default class App extends Component {
   state = {
-    teams: ['team1', 'team2'],
-    score: 0,
+    teams: ['TEAM1', 'TEAM2'],
     wickets: 0,
-    overs: 0,
+    score: 0,
+    overs: {},
     // overs: {
     //   1: [
     //     {
@@ -41,8 +41,8 @@ export default class App extends Component {
     //     },
     //   ],
     // },
-    balls: 0,
-    value: 0,
+    currentOver: 0,
+    currentBall: 0,
   };
 
   // previous = (e) => {
@@ -60,6 +60,7 @@ export default class App extends Component {
   //     overs: this.state.balls === 0 ? this.state.overs - 1 : this.state.overs,
   //   });
   // };
+  getScore = () => {};
 
   scoreIncrement = (e) => {
     this.setState({
@@ -70,12 +71,20 @@ export default class App extends Component {
     });
   };
 
-  Increment = (e) => {
+  increment = () => {
+    const { currentBall, currentOver, overs } = this.state;
     this.setState({
-      score: this.state.score + 1,
-      value: 1,
+      currentBall: currentBall < 5 ? currentBall + 1 : 0,
+      currentOver: currentBall < 5 ? currentOver : currentOver + 1,
+      overs: { ...overs },
     });
   };
+  // Increment = (e) => {
+  //   this.setState({
+  //     score: this.state.score + 1,
+  //     value: 1,
+  //   });
+  // };
 
   wicketIncrement = (e) => {
     this.setState({
@@ -93,11 +102,10 @@ export default class App extends Component {
           <span className="blue">{this.state.teams[1]}</span>
         </h1>
 
-        <h1 className="score">
-          {this.state.score}/{this.state.wickets}
-        </h1>
+        <h1 className="score">score/{this.state.wickets}</h1>
         <h1 className="overs">
-          <span>{this.state.overs}</span>.<span>{this.state.balls}</span>
+          <span>{this.state.currentOver}</span>.
+          <span>{this.state.currentBall}</span>
         </h1>
         <div className="balls">
           <span className="ball">1</span>
@@ -111,34 +119,34 @@ export default class App extends Component {
           </button>
         </div>
         <div>
-          <button className="point" onClick={this.scoreIncrement} id="0">
+          <button className="point" onClick={this.increment} id="0">
             0
           </button>
-          <button className="point" onClick={this.scoreIncrement} id="1">
+          <button className="point" onClick={this.increment} id="1">
             1
           </button>
-          <button className="point" onClick={this.scoreIncrement} id="2">
+          <button className="point" onClick={this.increment} id="2">
             2
           </button>
-          <button className="point" onClick={this.scoreIncrement} id="3">
+          <button className="point" onClick={this.increment} id="3">
             3
           </button>
-          <button className="point" onClick={this.scoreIncrement} id="4">
+          <button className="point" onClick={this.increment} id="4">
             4
           </button>
-          <button className="point" onClick={this.scoreIncrement} id="5">
+          <button className="point" onClick={this.increment} id="5">
             5
           </button>
-          <button className="point" onClick={this.scoreIncrement} id="6">
+          <button className="point" onClick={this.increment} id="6">
             6
           </button>
-          <button className="point" onClick={this.wicketIncrement} id="7">
+          <button className="point" id="7">
             W
           </button>
-          <button className="point" onClick={this.Increment} id="8">
+          <button className="point" id="8">
             wd
           </button>
-          <button className="point" onClick={this.Increment} id="8">
+          <button className="point" id="8">
             nb
           </button>
         </div>
