@@ -21,7 +21,7 @@ export default class Registration extends Component {
           />
         </div>
         <div className="inline">
-          <h3>overs(1-50)</h3>
+          <h3>overs</h3>
           <input
             type="number"
             name="team1"

@@ -3,7 +3,7 @@
   width: 90%;
   margin: auto;
   justify-content: center;
-  text-align: center;
+  /* text-align: center; */
   align-items: center;
 }
 
@@ -185,6 +185,6 @@ a.btn2:hover span:nth-child(4) {
 }
 
 .inline {
-  display: flex;
+  /* display: flex; */
   justify-items: center;
 }
